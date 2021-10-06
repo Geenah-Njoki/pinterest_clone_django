@@ -29,7 +29,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content btn-rounded">
         
         <div class="modal-body text-center">
@@ -52,7 +52,7 @@
                             <input type="email" class="form-controm form-control-lg input-rounded" placeholder="Email">
                             <input type="password" class="form-controm form-control-lg input-rounded mt-1" placeholder="Create a password">
                             <input type="tex" class="form-controm form-control-lg input-rounded mt-1" placeholder="Age">
-                            <button type="submit" class="btn btn-danger btn-rounded w-100 mt-2">Continue</button>
+                        <button type="submit" class="btn btn-danger btn-rounded w-100 mt-2">Continue</button>
                         </div>
 
                         <p class="font-weight-bold">OR</p>
@@ -97,6 +97,74 @@
 
   </div>
 
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content btn-rounded">
+        
+        <div class="modal-body text-center">
+          .  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>..
+
+        <div class="row justify-content-center my-3">
+            <img style="max-width:100px" src="https://about.pinterest.com/sites/all/themes/custom/pinterest/images/pinterest-footer-logo.png?e60023">
+        </div>
+            <h1>Welcome to Pinterest</h1>
+            
+
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8">
+
+                    <form>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control form-control-lg input-rounded" placeholder="Email">
+                            <input type="password" class="form-control form-control-lg input-rounded mt-1" placeholder="Create a password">
+                            <a href="#" class="font-weight-bold btn btn-outline-dark w-100 text-left btn-sm border-0">Forgot your password?</a>
+                            <button type="submit" class="btn btn-danger btn-rounded w-100 mt-2">Log in </button>
+                        </div>
+
+                        <p class="font-weight-bold">OR</p>
+                        <button type="button" class="btn btn-primary btn-rounded w-100 mt-2">
+                            Continue with Facebook
+                        </button>
+                        <button type="button" class="btn btn-light btn-rounded w-100 mt-2">
+                            Continue with Google
+                        </button>
+
+                        <small>
+                            By continuing, you agree to Pinterest's <a href ="#"class="font-weight-bold text-dark">Terms of Service</a> and acknowledge you've read our <a href ="#"class="font-weight-bold text-dark">Privacy Policy.</a>
+                        </small>
+
+                        <br>
+
+                        <hr class="bg-light">
+
+                        <small><a href="javascript:void(0)" id="openexampleModal" class="font-weight-bold text-dark">Not on Pinterest yet? Sign up</a></small>
+                        <br>
+                        <small><a href="#" class="font-weight-bold text-dark">Are you a business? Get started here!</a></small>
+
+
+                        
+                    </form>
+
+
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <h3><a href="#" class="btn btn-outline-dark border-0">Create a free business account</a></h3>
+                </div>
+            </div>
+      
+
+        </div>
+       
+
+        
+       
+      </div>
+    </div>
+
+  </div>
 
 
 
@@ -106,18 +174,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script>
-        $(document). ready(function(){
+        $(document).ready(function(){
 
-            $("openLoginModal").click(function(){
+            $("#openLoginModal").click(function(){
 
-                $("#exampleModal").modal("hide");
                 $("#loginModal").modal("show");
+                $("#exampleModal").modal("hide");
+
             });
 
-            $("openLoginModal").click(function(){
+            $("#openexampleModal").click(function(){
 
-                    $("#exampleModal").modal("hide");
-                    $("#loginModal").modal("show");
+                    $("#loginModal").modal("hide");
+                    $("#exampleModal").modal("show");
             });
  
 
