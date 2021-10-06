@@ -1,0 +1,22 @@
+.bg-image{
+    background-image: url(https://about.pinterest.com/sites/about/files/homepage_template_lrg_bkgd.jpg);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    object-fit: contain;
+    height: 85vh;
+    
+
+}
+
+.overlay{
+    height: 85vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    background: -webkit-linear-gradient(to right, #004e92, #00042883);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #00042883); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

@@ -1,0 +1,62 @@
+
+.bg-image{
+    background-image: url(https://about.pinterest.com/sites/about/files/homepage_template_lrg_bkgd.jpg);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    object-fit: contain;
+    height: 120vh;
+    
+
+}
+
+.overlay{
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+   
+
+}
+
+.btn-danger{
+    background-color: #e60023 !important;
+}
+.text-danger{
+    color: #e60023 !important;
+}
+.banner > p{
+    word-spacing: -2px;
+    letter-spacing: -1px;
+    
+}
+
+.card{
+    column-gap: 4px;
+    
+}
+ .card-link{
+     text-decoration: none;
+     color: black;
+ }
+
+ .card-link:hover{
+     color:#290107
+ }
+
+ .card-link>img:hover{
+     transform: scale(1.05);
+     transition: all .2s ease-in-out;
+ }
+
+
+ .btn-rounded{
+     border-radius: 20px!important;
+ }
+
+ .input-rounded{
+     border-radius: 15px!important;
+     font-size:medium !important;
+ }
+    

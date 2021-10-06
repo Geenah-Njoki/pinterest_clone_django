@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+   {% include "layouts/nav-component.html" %}
+
+   {% block content%}
+
+  {% endblock content%}
+
+   
+   
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content btn-rounded">
+        
+        <div class="modal-body text-center">
+          .  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>..
+
+        <div class="row justify-content-center my-3">
+            <img style="max-width:100px" src="https://about.pinterest.com/sites/all/themes/custom/pinterest/images/pinterest-footer-logo.png?e60023">
+        </div>
+            <h1>Welcome to Pinterest</h1>
+            <h6> Find new ideas to try </h6>
+
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8">
+
+                    <form>
+
+                        <div class="form-group">
+                            <input type="email" class="form-controm form-control-lg input-rounded" placeholder="Email">
+                            <input type="password" class="form-controm form-control-lg input-rounded mt-1" placeholder="Create a password">
+                            <input type="tex" class="form-controm form-control-lg input-rounded mt-1" placeholder="Age">
+                            <button type="submit" class="btn btn-danger btn-rounded w-100 mt-2">Continue</button>
+                        </div>
+
+                        <p class="font-weight-bold">OR</p>
+                        <button type="button" class="btn btn-primary btn-rounded w-100 mt-2">
+                            Continue with Facebook
+                        </button>
+                        <button type="button" class="btn btn-light btn-rounded w-100 mt-2">
+                            Continue with Google
+                        </button>
+
+                        <small>
+                            By continuing, you agree to Pinterest's <a href ="#"class="font-weight-bold text-dark">Terms of Service</a> and acknowledge you've read our <a href ="#"class="font-weight-bold text-dark">Privacy Policy.</a>
+                        </small>
+
+                        <br>
+
+                        <hr class="bg-light">
+
+                        <small><a href="javascript:void(0)"  id="openLoginModal" class="font-weight-bold text-dark">Already a Member? Log in</a></small>
+                        <br>
+                        <small><a href="#" class="font-weight-bold text-dark">Are you a business? Get started here!</a></small>
+
+
+                        
+                    </form>
+
+
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <h3><a href="#" class="btn btn-outline-dark border-0">Create a free business account</a></h3>
+                </div>
+            </div>
+      
+
+        </div>
+       
+
+        
+       
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+        $(document). ready(function(){
+
+            $("openLoginModal").click(function(){
+
+                $("#exampleModal").modal("hide");
+                $("#loginModal").modal("show");
+            });
+
+            $("openLoginModal").click(function(){
+
+                    $("#exampleModal").modal("hide");
+                    $("#loginModal").modal("show");
+            });
+ 
+
+
+        });
+
+        </script>
+
+
+
+
+
+</body>
+
+
+
+
+</html>
