@@ -59,4 +59,29 @@
      border-radius: 15px!important;
      font-size:medium !important;
  }
-    
+.btn-black{
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+
+}
+
+.btn-black:hover{
+    color:black;
+    background-color:transparent;
+    border: 2px solid black;
+}
+
+.text-black{
+    color:black;
+}
+
+.bg-white{
+    background:white;
+}
+
+.fabs{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

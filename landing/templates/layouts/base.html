@@ -14,11 +14,37 @@
 </head>
 <body>
 
-   {% include "layouts/nav-component.html" %}
+    {% if user.is_authenticated %}
+
+        {% include "layouts/user_nav.html" %}
+
+    {% else %}
+
+        {% include "layouts/nav-component.html" %}
+
+    {% endif %}
+
+  
+
 
    {% block content%}
 
   {% endblock content%}
+
+  <div class="fabs">
+      <div class="d-flex flex-column">
+
+        <button class="btn btn-outline-light border-0">
+            <i class=" text-black fa fa-plus-circle fa-3x"></i>
+        </button>
+
+        <button class="btn btn-outline-light border-0">
+            <i class=" text-black fa fa-question-circle fa-3x"></i>
+        </button>
+
+
+      </div>
+  </div>
 
    
    
