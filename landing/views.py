@@ -1,10 +1,11 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .forms import RandomForm, LoginForm, RegisterForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.core.mail import send_mail
 
 from landing.forms import RandomForm
 
@@ -40,7 +41,10 @@ def about(request):
 
 def registerUser(request):
     if request.method== "GET":
-        return HttpResponse("We don't want Get requests here")
+        
+        data = {'success': False, 
+                'message':"Should be a POST request"}
+        return JsonResponse(data)
     else:
         print(request.META)
         
@@ -58,7 +62,22 @@ def registerUser(request):
             user.set_password(password)
             user.save()
 
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            login(request, user)
+            mail_message = "Hello," + name+ ". Welcome to Our very own Pinterest Clone. Jibambe Msee."
+            ##Send User Welcome Email
+            send_mail(
+                'Welcome to PinClone',
+                mail_message,
+                "admin@gmail.com",
+                [email],
+                fail_silently = False
+
+            )
+
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        data = {'success': True, 
+                'message':"Register Successful, Redirecting..."}
+        return JsonResponse(data)
 def loginUser(request):
     if request.method == 'GET':
         HttpResponse("Go home")
@@ -77,10 +96,12 @@ def loginUser(request):
 
             
 
-                return render (request, 'profile.html', context)
+                return HttpResponseRedirect('/user/profile')
             else:
                 messages.error(request, 'Login not successful')
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-        else:
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+       
+def profile(request):
+    context = {}
+    return render(request, 'profile.html', context)

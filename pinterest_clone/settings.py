@@ -132,3 +132,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '7bd8d7ecdae481'
+EMAIL_HOST_PASSWORD = 'f72d2db546a78f'
+EMAIL_PORT = '2525'
