@@ -85,3 +85,11 @@
     bottom: 20px;
     right: 20px;
 }
+.wider-dropdown{
+    min-width:300px !important;
+}
+
+.dark-droplinks{
+    color: black;
+    font-weight: bold;
+}

@@ -39,6 +39,46 @@
         <li class="nav-item">
             <a class="btn btn-light font-weight-bold  btn-lg mx-2" href="#">{{user.username|make_list|first|title}}</a>
         </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             
+            </a>
+            <div class="dropdown-menu btn-rounded dropdown-menu-right wider-dropdown" aria-labelledby="navbarDropdown">
+                <small class="ml-3">Currently in</small>
+              <a class="dropdown-item" href="#">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-2 my-auto">
+                              <button class="btn btn-light btn-sm rounded-button font-weight-bold">{{user.username|make_list|first|title}}</button>
+                            
+                            </div>
+                          <div class="col-10">
+                              <p class="my-0 text-dark font-weight-bold">{{user.username}}</p>
+                              <small class="my-0 text-secondary">Personal</small><br>
+                              <small class="my-0 text-secondary">{{user.email}}</small>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <small class="ml-3 mt-5">Your accounts</small>
+              <a class="dropdown-item text-dark font-weight-bold" href="#">Add account</a>
+              <a class="dropdown-item text-dark font-weight-bold" href="#">Convert to business</a>
+              <div class="dropdown-divider"></div>
+
+              <small class="ml-3 mt-5">More options</small>
+
+              <a class="dropdown-item text-dark font-weight-bold" href="#">Settings</a>
+              <a class="dropdown-item text-dark font-weight-bold" href="#">Tune your home feed</a>
+              <a class="dropdown-item text-dark font-weight-bold" href="#">Install the windows app</a>
+              <a class="dropdown-item text-dark font-weight-bold" href="{% url 'logout' %}">Log out</a>
+
+
+             
+            </div>
+          </li>
+        
       </ul>
         
   </nav>
