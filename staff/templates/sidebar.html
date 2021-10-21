@@ -1,0 +1,56 @@
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <a class="navbar-brand text-danger font-weight-bold" href="{% url 'home' %}">
+            <img style="max-width: 100px;" src="https://about.pinterest.com/sites/all/themes/custom/pinterest/images/pinterest-footer-logo.png?e60023">
+        </a>
+
+        
+    </div>
+
+    <ul class="list-unstyled components">
+        
+       
+        <li>
+            <a href="{% url 'dashboard' %}">
+                <i class="fa fa-tachometer mr-3"></i>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-users mr-3"></i>
+                Users
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-thumb-tack mr-3"></i>
+                Pins
+            </a>
+        </li>
+        
+        <li>
+            <a href="#">
+                <i class="fa fa-th mr-3"></i>
+                Boards
+            </a>
+        </li>
+        
+        <li>
+            <a href="#">
+                <i class="fa fa-commenting mr-3"></i>
+                Comments
+            </a>
+        </li>
+        
+
+       
+    </ul>
+
+    <div class="text-light position-absolute" style="bottom: 20px;">
+        <div class="bg-light" style="height: 1px;"></div>
+        <small class=" ml-3">  © Copyright, {% now "Y" %}</small>
+    
+    
+    </div>
+</nav>
