@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="{% static 'images/avatar.svg' %}">
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-12">
+        <h4>Name: {{user.username}}</h4>
+        <p>Email: {{user.email}}</p>
+        <p>Pins: 302</p>
+        <p>Boards: 13</p>
+
+        <div class="row justify-content-center">
+            <a href="#" class="btn btn-outline-dark mx-1">Edit Details</a>
+            <a href="{% url 'user.delete' user.id %}" class="btn btn-danger mx-1">Delete User</a>
+
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <h4>Pins</h4>
+
+    </div>
+
+    <div class="col-lg-4 col-sm-12">
+        <img class="img-fluid rounded" src="{% static 'images/avatar.svg' %}">
+    </div>
+
+    <div class="col-lg-4 col-sm-12">
+        <img class="img-fluid rounded" src="{% static 'images/avatar.svg' %}">
+    </div>
+
+    <div class="col-lg-4 col-sm-12">
+        <img class="img-fluid rounded" src="{% static 'images/avatar.svg' %}">
+    </div>
+
+    <div class="col-lg-12 text-center">
+        <h4 class="text-left">Comments</h4>
+
+        <img class="img-fluid rounded text-center mx-5 px-5" style="max-height: 300px;" src="{% static 'images/avatar.svg' %}">
+
+        <p class="text-center">No Comments Yet</p>
+    </div>
+</div>
+
+{% endblock %}

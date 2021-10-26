@@ -22,6 +22,10 @@ from staff import views
 urlpatterns = [
     path('dashboard', dashboard, name="dashboard"),
     path('user/sendEmail', views.sendEmail, name="user.sendEmail"),
+    path('users', viewUsers, name='users'),
+    path('users/<int:id>', userDetails, name="user.details"),
+    path('users/delete/<int:id>', deleteUser, name="user.delete")
+    
 
     
 ]

@@ -1,8 +1,11 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from .forms import EmailForm
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.http import HttpResponse, JsonResponse
+from .forms import EmailForm
 
 
 
@@ -12,7 +15,8 @@ from django.core.mail import send_mail
 def dashboard(request):
 
     context = {
-        'users': User.objects.all()
+        'users': User.objects.all(),
+        'email_form': EmailForm()
     }
 
     return render(request, 'dashboard.html', context)
@@ -24,24 +28,61 @@ def sendEmail(request):
                 'message':"Should be a POST request"}
         return JsonResponse(data)
     else:
-        print(request.META)
         
         form = EmailForm(request.POST)
 
         if form.is_valid():
-            age = form.cleaned_data['age']
+            email = form.cleaned_data['recipient']
+            message = form.cleaned_data['message']
+            name = form.cleaned_data['name']
+
+            
 
 
-        sendEmail(request, user)
-        mail_message = "Hello," + name+ ". Welcome to Our very own Pinterest Clone. Jibambe Msee."
-            ##Send User Welcome Email
-        sendEmail(
-            'Welcome to PinClone',
-            mail_message,
-            "admin@gmail.com",
-            [email],
-            fail_silently = False
+            mail_message = "Hello," + name+ ", "+ message
+                ##Send User Welcome Email
+            send_mail(
+                'Pinterest Age Request',
+                mail_message,
+                "admin@gmail.com",
+                [email],
+                fail_silently = False
 
             )
 
-        # return HttpResponseRedirect(request.META.get('HTTP_REFERER')
+            data = {'success': True, 
+                'message':"Mail sent successfully"}
+
+            return JsonResponse(data)
+
+def viewUsers(request):
+    context = {
+        'users' : User.objects.all()
+    }
+
+    return render(request, 'users.html', context)
+
+def userDetails(request, id):
+
+    user = User.objects.get(pk = id)
+    context = {
+        'user': user
+    }
+    
+    return render(request, 'user_details.html', context)
+def deleteUser(request, id):
+
+    user = User.objects.get(pk=id)
+    user.delete()
+
+    
+
+    if request.is_ajax():
+
+        data = {}
+        return JsonResponse(data)
+
+    else:
+        return HttpResponseRedirect('/staff/users')
+
+

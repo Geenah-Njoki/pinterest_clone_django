@@ -37,46 +37,6 @@
             <!-- We'll fill this with dummy content -->
             
             
-            <div class="modal fade" id="emailmodal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="emailModalLabel">New message</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form id= "EmailForm">
-                        {% csrf_token %}
-
-                      <div class="form-group">
-
-                        {% for hidden in email_form.hidden_fields %}
-                        {{hidden}}
-                    {% endfor %}
-
-                    {% for field in email_form.visible_fields %}
-
-                        {{field|add_class:'form-control form-control-lg input-rounded my-1'}}
-
-                    {% endfor %}
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
-                  </div>
-                </div>
-              </div>
-            </div>
         
         
         
@@ -106,6 +66,42 @@
 
    
    
+    
+    <div class="modal fade" id="emailmodal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="emailModalLabel">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id= "EmailForm">
+                {% csrf_token %}
+
+              <div class="form-group">
+
+                {% for hidden in email_form.hidden_fields %}
+                  {{hidden}}
+                {% endfor %}
+
+                {% for field in email_form.visible_fields %}
+                <label  class="col-form-label">{{field.label}}:</label>
+
+
+                    {{field|add_class:'form-control form-control-lg input-rounded my-1'}}
+
+                {% endfor %}
+              </div>
+              
+              <button type="submit" class="btn btn-primary w-100 my-2"><i class="fa fa-envelope mr-2"></i>Send message</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -123,59 +119,61 @@
                 $('#sidebar').toggleClass('active');
             });
 
+            var button;
+
+            $("#emailModalBtn").click(function(){
+
+              let email = $(this).data("email")
+              let name = $(this) .data("name")
+              button = $(this)
+
+
+              $("input[name=recipient]").val(email)
+              $("input[name=name]").val(name)
+
+              $("#emailmodal").modal("show");
+
+            });
+
+            $("#EmailForm").on("submit", function(e){
+
+                e.preventDefault();
+
+                button.html("Sending...")
+
+                $.ajax({
+                    data : $("#EmailForm").serialize(),
+                    dataType : "json" ,
+                    url: "{% url 'user.sendEmail' %}",
+                    type: "POST",
+                    success: function(data){
+                      if(data['success']){
+
+                          $("#emailmodal").modal("hide");
+                          button.html("Send Email")
+                          Notiflix.Notify.Success(data['message']);
+                          }
+
+                          else{
+                              Notiflix.Notify.Failure(data['message']);
+                          }
+
+                          console.log(data);
+
+                    },
+                    error: function(data){
+
+                      console.log(data);
+
+                    }
+
+            });
+
+
+          });
+
         });
 
-        $(document).ready(function(){
-
-    $("#EmailForm").on("submit", function(e){
-
-    e.preventDefault();
-
-    $.ajax({
-        data : $("#emailForm"). serialize(),
-        dataType : "json" ,
-        
-        type: "POST",
-        success: function(data){
-    if(data['success']){
-
-         $("#emailModal").modal("hide");
-
-
-         Notiflix.Notify.Success(data['message']);
-
-         setTimeout(function(){
-
-             window.location.replace("{%url 'user.profile' %}")
-
-         },3000);
-        }
-
-        else{
-            Notiflix.Notify.Failure(data['message']);
-        }
-
-     console.log(data);
-
-    },
-    error: function(data){
-
-     console.log(data);
-
-    }
-
-});
-
-    $("#openEmailModal").click(function(){
-
-        $("#EmailModal").modal("show");
-        $("#exampleModal").modal("hide");
-
-});
-
-        
-        
-       
                   
     </script>
     
