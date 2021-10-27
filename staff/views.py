@@ -6,6 +6,11 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import HttpResponse, JsonResponse
 from .forms import EmailForm
+from landing.models import Pin, Board, Comment
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView
+from .models import *
+
 
 
 
@@ -62,6 +67,28 @@ def viewUsers(request):
 
     return render(request, 'users.html', context)
 
+def viewPins(request):
+    context = {
+        'pins' : Pin.objects.all()
+    }
+
+    return render(request, 'pins.html', context)
+
+def viewBoards(request):
+    context = {
+        'boards' : Board.objects.all()
+    }
+
+    return render(request, 'boards.html', context)
+
+def viewComments(request):
+    context = {
+        'comments' : Comment.objects.all()
+    }
+
+    return render(request, 'comments.html', context)
+
+
 def userDetails(request, id):
 
     user = User.objects.get(pk = id)
@@ -84,5 +111,11 @@ def deleteUser(request, id):
 
     else:
         return HttpResponseRedirect('/staff/users')
+
+class CreateBoard(CreateView):
+        model= Board
+        fields = '__all__'
+        success_url = '/staff/boards'
+        template_name = 'board_form.html'
 
 

@@ -145,3 +145,6 @@ EMAIL_HOST_PASSWORD = 'f72d2db546a78f'
 EMAIL_PORT = '2525'
 
 LOGOUT_REDIRECT_URL = "/"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

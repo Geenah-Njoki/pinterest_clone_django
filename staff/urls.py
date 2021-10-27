@@ -24,7 +24,12 @@ urlpatterns = [
     path('user/sendEmail', views.sendEmail, name="user.sendEmail"),
     path('users', viewUsers, name='users'),
     path('users/<int:id>', userDetails, name="user.details"),
-    path('users/delete/<int:id>', deleteUser, name="user.delete")
+    path('users/delete/<int:id>', deleteUser, name="user.delete"),
+    path('pins', viewPins, name='pins'),
+    path('boards', viewBoards, name='boards'),
+    path('comments', viewComments, name='comments'),
+    path('boards/create', CreateBoard.as_view(), name="create.board")
+
     
 
     
