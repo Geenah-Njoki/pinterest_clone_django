@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import HttpResponse, JsonResponse
 from .forms import EmailForm
-from landing.models import Pin, Board, Comment
+from landing.models import Pin, Board, Comment, Category
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import *
@@ -81,6 +81,8 @@ def viewBoards(request):
 
     return render(request, 'boards.html', context)
 
+
+
 def viewComments(request):
     context = {
         'comments' : Comment.objects.all()
@@ -117,5 +119,72 @@ class CreateBoard(CreateView):
         fields = '__all__'
         success_url = '/staff/boards'
         template_name = 'board_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Board"
+
+            return context
+
+
+class CategoryList(ListView):
+    model = Category
+    context_object_name = "categories"
+    template_name = 'categories.html'
+
+class CreateCategory(CreateView):
+        model= Category
+        fields = ["name"]
+        success_url = '/staff/categories'
+        template_name = 'board_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Category"
+
+            return context
+        
+class CategoryUpdate(UpdateView):
+        model= Category
+        fields = ["name"]
+        success_url = '/staff/categories'
+        template_name = 'board_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update Category"
+
+            return context
+        
+
+class CreatePin(CreateView):
+        model= Pin
+        fields = '__all__'
+        success_url = '/staff/pins'
+        template_name = 'board_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Pin"
+
+            return context
+class PinList(ListView):
+    model = Pin
+    context_object_name = "pins"
+    template_name = 'pins.html'
+
+class PinUpdate(UpdateView):
+        model= Pin
+        fields = '__all__'
+        success_url = '/staff/pins'
+        template_name = 'board_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update Pin"
+
+            return context
+
+
 
 

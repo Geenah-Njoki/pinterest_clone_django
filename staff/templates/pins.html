@@ -16,7 +16,7 @@
             <div class="row">
                 <h5>Pins</h5>
 
-                <a href="#" class="btn btn-danger btn-sm ml-auto">
+                <a href="{% url 'create.pin' %}" class="btn btn-danger btn-sm ml-auto">
                     <i class="fa fa-plus-circle mr-2"></i>
                     Create Pin
                 </a>
@@ -26,6 +26,7 @@
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Title</th>
                         <th>Image</th>
                         <th>Description</th>
@@ -35,32 +36,36 @@
                         <th>Category Id</th>
                         <th>Created at</th>
                         <th>Updated at</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    {% for user in users %}
+                    {% for pin in pins %}
 
                         <tr>
-                            <td>{{user.id}}</td>
-                            <td>{{user.username}}</td>
-                            <td>{{user.email}}</td>
-                            <td>
-                                {% if user.age is None%}
-                                    Oldie
-
-                                    <button  class="btn btn-dark btn-sm" data-email="{{user.email}}" data-name="{{user.username}}" id="emailModalBtn" >
-                                        <i class="fa fa-envelope"></i>
-                                    </button>
-                                
-                                   
-                                {% else %}
-                                    {{user.age}}
-                                {% endif %}
+                            <td>{{pin.id}}
+                                <img src="{{ pin.image.url}}" height="50px" width="50px">
                             </td>
-                            <td>{{user.date_joined}}</td>
+                            <td>Title</td>
+                            <td>{{pin.image}}</td>
+                            <td>{{pin.description}}</td>
+                            <td>{{pin.website}}</td>
+                            <td>{{pin.alt_text}}</td>
+                            <td>{{pin.board_id}}</td>
+                            <td>{{pin.category_id}}</td>
+                            <td>{{pin.created_at}}</td>
+                            <td>{{pin.updated_at}}</td>
+                            
+                            
+
+
+                            
+                               
+                            
+                            
                             <td>
-                                <a href="#" class="btn btn-dark btn-sm"><i class="fa fa-eye"></i></a>
+                                <a href="{% url 'pin.update' pin.id %}" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i></a>
                                 <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 
                             

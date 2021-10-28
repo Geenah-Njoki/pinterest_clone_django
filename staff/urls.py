@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 from staff import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('dashboard', dashboard, name="dashboard"),
@@ -28,9 +29,17 @@ urlpatterns = [
     path('pins', viewPins, name='pins'),
     path('boards', viewBoards, name='boards'),
     path('comments', viewComments, name='comments'),
-    path('boards/create', CreateBoard.as_view(), name="create.board")
+    path('boards/create', CreateBoard.as_view(), name="create.board"),
+    path('categories', CategoryList.as_view(), name="categories"),
+    path('category/create', CreateCategory.as_view(), name="create.category"),
+    path('category/update/<pk>', CategoryUpdate.as_view(), name= "category.update"),
+    path('pin/create', CreatePin.as_view(), name="create.pin"),
+    path('pins', PinList.as_view(), name="pins"),
+    path('pin/update/<pk>', PinUpdate.as_view(), name= "pin.update"),
 
-    
 
-    
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

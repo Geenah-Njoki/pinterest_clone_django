@@ -16,18 +16,18 @@
     <div class="card">
         <div class="card-header bg-white">
             <div class="row">
-                <h5>Boards</h5>
+                <h5>{{ title }}</h5>
 
               
             </div>
         </div>
         <div class="card-body">
 
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
 
                 {% csrf_token %}
 
-                <div class= "form-group">
+                <div class= "form-group text-dark">
 
                     {% for hidden in form.hidden_fields %}
                         {{hidden}}
