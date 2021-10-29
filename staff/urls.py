@@ -36,6 +36,7 @@ urlpatterns = [
     path('pin/create', CreatePin.as_view(), name="create.pin"),
     path('pins', PinList.as_view(), name="pins"),
     path('pin/update/<pk>', PinUpdate.as_view(), name= "pin.update"),
+    path('pin/<pk>/details', PinDetails.as_view(), name="pin.details"),
 
 
 

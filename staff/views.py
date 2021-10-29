@@ -9,7 +9,10 @@ from .forms import EmailForm
 from landing.models import Pin, Board, Comment, Category
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
+
 
 
 
@@ -17,6 +20,7 @@ from .models import *
 
 # Create your views here.
 
+@login_required
 def dashboard(request):
 
     context = {
@@ -26,6 +30,7 @@ def dashboard(request):
 
     return render(request, 'dashboard.html', context)
 
+@login_required
 def sendEmail(request):
     if request.method== "GET":
         
@@ -60,6 +65,7 @@ def sendEmail(request):
 
             return JsonResponse(data)
 
+@login_required
 def viewUsers(request):
     context = {
         'users' : User.objects.all()
@@ -67,6 +73,7 @@ def viewUsers(request):
 
     return render(request, 'users.html', context)
 
+@login_required
 def viewPins(request):
     context = {
         'pins' : Pin.objects.all()
@@ -74,6 +81,7 @@ def viewPins(request):
 
     return render(request, 'pins.html', context)
 
+@login_required
 def viewBoards(request):
     context = {
         'boards' : Board.objects.all()
@@ -83,6 +91,7 @@ def viewBoards(request):
 
 
 
+@login_required
 def viewComments(request):
     context = {
         'comments' : Comment.objects.all()
@@ -91,6 +100,7 @@ def viewComments(request):
     return render(request, 'comments.html', context)
 
 
+@login_required
 def userDetails(request, id):
 
     user = User.objects.get(pk = id)
@@ -99,6 +109,7 @@ def userDetails(request, id):
     }
     
     return render(request, 'user_details.html', context)
+@login_required
 def deleteUser(request, id):
 
     user = User.objects.get(pk=id)
@@ -114,7 +125,7 @@ def deleteUser(request, id):
     else:
         return HttpResponseRedirect('/staff/users')
 
-class CreateBoard(CreateView):
+class CreateBoard(LoginRequiredMixin, CreateView):
         model= Board
         fields = '__all__'
         success_url = '/staff/boards'
@@ -184,6 +195,11 @@ class PinUpdate(UpdateView):
             context['title'] = "Update Pin"
 
             return context
+
+class PinDetails(DetailView):
+    model = Pin
+    template_name = 'pin_details.html'
+    context_object_name = "pin"
 
 
 

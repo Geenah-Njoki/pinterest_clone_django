@@ -8,24 +8,19 @@ from django.contrib import messages
 from django.core.mail import send_mail
 
 from landing.forms import RandomForm
+from .models import *
 
 # Create your views here.
 
 
 def home(request):
 
-    fruits=["mango", "apple", "melon", "avocado"] 
-
+    
 
     context = {
-        "title" : "My first title",
         "login_form" : LoginForm(),
         "register_form" : RegisterForm(),
-        "first_name" : "Rey",
-        "last_name" : "Mysterio",
-        "second_name" : "Best",
-        "third_name" : "Wrestler",
-        "fruits" : fruits,
+        "pins" : Pin.objects.all()
     }
 
     return render(request, 'home.html', context)
