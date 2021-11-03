@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.views.generic import TemplateView
 
 from landing.forms import RandomForm
 from .models import *
@@ -107,3 +108,16 @@ def logout(request):
     logout(request)
 
     return HttpResponseRedirect('/')
+
+
+class CreateNewPage(TemplateView):
+        model= Pin
+        fields = '__all__'
+       
+        template_name = 'layouts/template2.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Pin"
+
+            return context

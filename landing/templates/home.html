@@ -20,8 +20,19 @@
 
     <div class="row">
         {% for pin in pins%}
+
+        <div class="col-lg-8 col-sm-12">
+
+            <a href="{% url 'create.new_page' %}" target="template2.html">
+                <img src="{{pin.image.url}}" width="200px" class="btn-rounded" style="object-fit:cover;" alt="{{pin.name}}">
+            </a>
+            
     
-         <img src="{{pin.image.url}}" width="200px" class="btn-rounded" style="object-fit:cover;">
+         
+
+         <h5>My first pin</h5>
+
+        </div>
     
         {% endfor %}
     </div>

@@ -55,5 +55,8 @@ class Favorite(models.Model):
         return self.user_id
 
 
+    
+
+
 
 
