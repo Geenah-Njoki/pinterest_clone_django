@@ -1,17 +1,43 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
 
 {% block content%}
 
 
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-lg-6 col-sm-8">
-            <img src="https://images.unsplash.com/photo-1515595967223-f9fa59af5a3b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxlYWYlMjBhcnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" width="200px" class="btn-rounded" style="object-fit:cover;" alt="{{pin.name}}">
-        </div>
-        <div class="col-lg-6 col-sm-8">
-            <h5>My pin</h5>
-        </div>
+<div class="container justify-content-center d-flex">
 
+    <div class="card shadow mt-3 p-2 bg-white w-75" style="border-radius:2%;">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <img class="w-100 float-start" src="https://images.unsplash.com/photo-1515595967223-f9fa59af5a3b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxlYWYlMjBhcnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" width="200px" class="btn-rounded" style="object-fit:cover; border-radius:3%;" alt="{{pin.name}}">
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12 p-3">
+                <i class="fa fa-ellipsis-h fa-lg p-2" aria-hidden="true"></i>
+                <i class="fa fa-upload fa-lg p-2" aria-hidden="true"></i>
+                <i class="fa fa-clone fa-lg p-2" aria-hidden="true"></i>
+                <button class="btn btn-danger btn-rounded pull-right">Save</button>
+
+                <h4 class="mt-5"> MY FIRST PIN </h4>
+               
+                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, suscipit dolorem fugit nostrum, sit, ex soluta laborum animi porro illum perferendis ea tempore delectus veritatis magni dicta accusamus voluptatum consequuntur!</p>
+                <div class="d-flex flex-row">
+                 <img src="{% static 'images/avatar.jpg' %}" height="50px" width="50px">
+                
+                    <h5>MY FIRST PIN
+                        <br>
+                        <small class="text-muted">50.7k followers</small>
+                    </h5>
+
+                    <button class="btn btn-light btn-rounded ml-auto">Follow</button>
+                </div>
+                
+                
+            </div>
+
+            
+    
+        </div>
+    
     </div>
 </div>
 
